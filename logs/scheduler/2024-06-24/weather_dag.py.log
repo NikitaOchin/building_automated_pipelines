@@ -2187,3 +2187,17 @@ NameError: name 'timestamp_task' is not defined
 [2024-06-24T11:49:57.234+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:49:57.234+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2024-06-24T11:49:57.261+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:49:57.260+0000] {dag.py:3954} INFO - Setting next_dagrun for weather_dag to 2024-06-24 00:00:00+00:00, run_after=2024-06-25 00:00:00+00:00
 [2024-06-24T11:49:57.281+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/weather_dag.py took 0.120 seconds
+[2024-06-24T11:50:27.709+0000] {processor.py:161} INFO - Started process (PID=11993) to work on /opt/airflow/dags/weather_dag.py
+[2024-06-24T11:50:27.710+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/weather_dag.py for tasks to queue
+[2024-06-24T11:50:27.713+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:50:27.713+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/weather_dag.py
+[2024-06-24T11:50:27.753+0000] {processor.py:840} INFO - DAG(s) 'weather_dag' retrieved from /opt/airflow/dags/weather_dag.py
+[2024-06-24T11:50:27.776+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:50:27.776+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-06-24T11:50:27.803+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:50:27.803+0000] {dag.py:3954} INFO - Setting next_dagrun for weather_dag to 2024-06-24 00:00:00+00:00, run_after=2024-06-25 00:00:00+00:00
+[2024-06-24T11:50:27.822+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/weather_dag.py took 0.118 seconds
+[2024-06-24T11:50:58.449+0000] {processor.py:161} INFO - Started process (PID=12053) to work on /opt/airflow/dags/weather_dag.py
+[2024-06-24T11:50:58.451+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/weather_dag.py for tasks to queue
+[2024-06-24T11:50:58.452+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:50:58.452+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/weather_dag.py
+[2024-06-24T11:50:58.491+0000] {processor.py:840} INFO - DAG(s) 'weather_dag' retrieved from /opt/airflow/dags/weather_dag.py
+[2024-06-24T11:50:58.508+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:50:58.508+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-06-24T11:50:58.531+0000] {logging_mixin.py:188} INFO - [2024-06-24T11:50:58.531+0000] {dag.py:3954} INFO - Setting next_dagrun for weather_dag to 2024-06-24 00:00:00+00:00, run_after=2024-06-25 00:00:00+00:00
+[2024-06-24T11:50:58.547+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/weather_dag.py took 0.104 seconds
