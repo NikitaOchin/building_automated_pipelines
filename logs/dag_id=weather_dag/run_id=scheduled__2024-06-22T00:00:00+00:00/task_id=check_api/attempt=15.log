@@ -1,0 +1,74 @@
+[2024-06-24T10:49:50.605+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-24T10:49:50.621+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.check_api scheduled__2024-06-22T00:00:00+00:00 [queued]>
+[2024-06-24T10:49:50.628+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.check_api scheduled__2024-06-22T00:00:00+00:00 [queued]>
+[2024-06-24T10:49:50.629+0000] {taskinstance.py:2306} INFO - Starting attempt 15 of 15
+[2024-06-24T10:49:50.645+0000] {taskinstance.py:2330} INFO - Executing <Task(HttpSensor): check_api> on 2024-06-22 00:00:00+00:00
+[2024-06-24T10:49:50.651+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=687) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-24T10:49:50.652+0000] {standard_task_runner.py:63} INFO - Started process 689 to run task
+[2024-06-24T10:49:50.652+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'check_api', 'scheduled__2024-06-22T00:00:00+00:00', '--job-id', '66', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmp514wrjwg']
+[2024-06-24T10:49:50.654+0000] {standard_task_runner.py:91} INFO - Job 66: Subtask check_api
+[2024-06-24T10:49:50.698+0000] {task_command.py:426} INFO - Running <TaskInstance: weather_dag.check_api scheduled__2024-06-22T00:00:00+00:00 [running]> on host afc8096e8b86
+[2024-06-24T10:49:50.783+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_dag' AIRFLOW_CTX_TASK_ID='check_api' AIRFLOW_CTX_EXECUTION_DATE='2024-06-22T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='15' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-22T00:00:00+00:00'
+[2024-06-24T10:49:50.786+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-24T10:49:50.787+0000] {baseoperator.py:400} WARNING - HttpSensor.execute cannot be called outside TaskInstance!
+[2024-06-24T10:49:50.787+0000] {http.py:137} INFO - Poking: data/3.0/onecall
+[2024-06-24T10:49:50.794+0000] {base.py:84} INFO - Using connection ID 'weather_conn' for task execution.
+[2024-06-24T10:49:51.066+0000] {http.py:200} ERROR - HTTP error: Bad Request
+[2024-06-24T10:49:51.067+0000] {http.py:201} ERROR - {"cod":"400","message":"wrong latitude"}
+[2024-06-24T10:49:51.067+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-24T10:49:51.078+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/http/hooks/http.py", line 198, in check_response
+    response.raise_for_status()
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.openweathermap.org/data/3.0/onecall?appid=***&lat=cities%5BLviv%5D%5B0%5D&lon=cities%5BLviv%5D%5B1%5D
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/http/sensors/http.py", line 164, in execute
+    super().execute(context=context)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/base.py", line 264, in execute
+    raise e
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/base.py", line 246, in execute
+    poke_return = self.poke(context)
+                  ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/http/sensors/http.py", line 158, in poke
+    raise exc
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/http/sensors/http.py", line 139, in poke
+    response = hook.run(
+               ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/http/hooks/http.py", line 188, in run
+    return self.run_and_check(session, prepped_request, extra_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/http/hooks/http.py", line 239, in run_and_check
+    self.check_response(response)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/http/hooks/http.py", line 202, in check_response
+    raise AirflowException(str(response.status_code) + ":" + response.reason)
+airflow.exceptions.AirflowException: 400:Bad Request
+[2024-06-24T10:49:51.084+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=weather_dag, task_id=check_api, run_id=scheduled__2024-06-22T00:00:00+00:00, execution_date=20240622T000000, start_date=20240624T104950, end_date=20240624T104951
+[2024-06-24T10:49:51.097+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 66 for task check_api (400:Bad Request; 689)
+[2024-06-24T10:49:51.107+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-24T10:49:51.118+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1297: AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+  result = cls.__new__(cls)
+
+[2024-06-24T10:49:51.119+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1297: AirflowProviderDeprecationWarning: Call to deprecated class SimpleHttpOperator. (Class `SimpleHttpOperator` is deprecated and will be removed in a future release. Please use `HttpOperator` instead.)
+  result = cls.__new__(cls)
+
+[2024-06-24T10:49:51.145+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-24T10:49:51.150+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

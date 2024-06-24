@@ -1,0 +1,22 @@
+[2024-06-24T11:40:30.333+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-24T11:40:30.363+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.processing_tasks.extract_data_kharkiv scheduled__2024-06-22T00:00:00+00:00 [queued]>
+[2024-06-24T11:40:30.376+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.processing_tasks.extract_data_kharkiv scheduled__2024-06-22T00:00:00+00:00 [queued]>
+[2024-06-24T11:40:30.377+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-24T11:40:30.401+0000] {taskinstance.py:2330} INFO - Executing <Task(SimpleHttpOperator): processing_tasks.extract_data_kharkiv> on 2024-06-22 00:00:00+00:00
+[2024-06-24T11:40:30.411+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1695) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-24T11:40:30.413+0000] {standard_task_runner.py:63} INFO - Started process 1706 to run task
+[2024-06-24T11:40:30.413+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'processing_tasks.extract_data_kharkiv', 'scheduled__2024-06-22T00:00:00+00:00', '--job-id', '163', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmpn6legd_y']
+[2024-06-24T11:40:30.417+0000] {standard_task_runner.py:91} INFO - Job 163: Subtask processing_tasks.extract_data_kharkiv
+[2024-06-24T11:40:30.501+0000] {task_command.py:426} INFO - Running <TaskInstance: weather_dag.processing_tasks.extract_data_kharkiv scheduled__2024-06-22T00:00:00+00:00 [running]> on host afc8096e8b86
+[2024-06-24T11:40:30.684+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_dag' AIRFLOW_CTX_TASK_ID='processing_tasks.extract_data_kharkiv' AIRFLOW_CTX_EXECUTION_DATE='2024-06-22T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-22T00:00:00+00:00'
+[2024-06-24T11:40:30.687+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-24T11:40:30.688+0000] {http.py:169} INFO - Calling HTTP method
+[2024-06-24T11:40:30.701+0000] {base.py:84} INFO - Using connection ID 'weather_conn' for task execution.
+[2024-06-24T11:40:30.713+0000] {base.py:84} INFO - Using connection ID 'weather_conn' for task execution.
+[2024-06-24T11:40:31.166+0000] {http.py:208} INFO - {"lat":49.9884,"lon":36.2328,"timezone":"Europe/Kiev","timezone_offset":10800,"data":[{"dt":1719014400,"sunrise":1719019565,"sunset":1719078484,"temp":288.81,"feels_like":288.39,"pressure":1013,"humidity":75,"dew_point":284.4,"uvi":0,"clouds":12,"visibility":10000,"wind_speed":2.73,"wind_deg":308,"wind_gust":7.4,"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}]}]}
+[2024-06-24T11:40:31.169+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-24T11:40:31.200+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=weather_dag, task_id=processing_tasks.extract_data_kharkiv, run_id=scheduled__2024-06-22T00:00:00+00:00, execution_date=20240622T000000, start_date=20240624T114030, end_date=20240624T114031
+[2024-06-24T11:40:31.230+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-24T11:40:31.245+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

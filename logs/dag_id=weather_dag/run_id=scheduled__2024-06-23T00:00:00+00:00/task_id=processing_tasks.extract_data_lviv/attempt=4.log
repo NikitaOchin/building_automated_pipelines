@@ -1,0 +1,29 @@
+[2024-06-24T11:40:35.298+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-24T11:40:35.327+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_dag.processing_tasks.extract_data_lviv scheduled__2024-06-23T00:00:00+00:00 [queued]>
+[2024-06-24T11:40:35.341+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_dag.processing_tasks.extract_data_lviv scheduled__2024-06-23T00:00:00+00:00 [queued]>
+[2024-06-24T11:40:35.342+0000] {taskinstance.py:2306} INFO - Starting attempt 4 of 4
+[2024-06-24T11:40:35.367+0000] {taskinstance.py:2330} INFO - Executing <Task(SimpleHttpOperator): processing_tasks.extract_data_lviv> on 2024-06-23 00:00:00+00:00
+[2024-06-24T11:40:35.378+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1720) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-24T11:40:35.380+0000] {standard_task_runner.py:63} INFO - Started process 1740 to run task
+[2024-06-24T11:40:35.381+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'weather_dag', 'processing_tasks.extract_data_lviv', 'scheduled__2024-06-23T00:00:00+00:00', '--job-id', '176', '--raw', '--subdir', 'DAGS_FOLDER/weather_dag.py', '--cfg-path', '/tmp/tmp71d1tsmp']
+[2024-06-24T11:40:35.386+0000] {standard_task_runner.py:91} INFO - Job 176: Subtask processing_tasks.extract_data_lviv
+[2024-06-24T11:40:35.485+0000] {task_command.py:426} INFO - Running <TaskInstance: weather_dag.processing_tasks.extract_data_lviv scheduled__2024-06-23T00:00:00+00:00 [running]> on host afc8096e8b86
+[2024-06-24T11:40:35.727+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_dag' AIRFLOW_CTX_TASK_ID='processing_tasks.extract_data_lviv' AIRFLOW_CTX_EXECUTION_DATE='2024-06-23T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-23T00:00:00+00:00'
+[2024-06-24T11:40:35.731+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-24T11:40:35.731+0000] {http.py:169} INFO - Calling HTTP method
+[2024-06-24T11:40:35.749+0000] {base.py:84} INFO - Using connection ID 'weather_conn' for task execution.
+[2024-06-24T11:40:35.764+0000] {base.py:84} INFO - Using connection ID 'weather_conn' for task execution.
+[2024-06-24T11:40:36.133+0000] {http.py:208} INFO - {"lat":49.8383,"lon":24.023,"timezone":"Europe/Kiev","timezone_offset":10800,"data":[{"dt":1719100800,"sunrise":1719108959,"sunset":1719167776,"temp":290.71,"feels_like":291.03,"pressure":1012,"humidity":96,"dew_point":290.07,"uvi":0,"clouds":100,"visibility":10000,"wind_speed":3.26,"wind_deg":225,"wind_gust":6.35,"weather":[{"id":500,"main":"Rain","description":"light rain","icon":"10n"}],"rain":{"1h":0.24}}]}
+[2024-06-24T11:40:36.136+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-24T11:40:36.178+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=weather_dag, task_id=processing_tasks.extract_data_lviv, run_id=scheduled__2024-06-23T00:00:00+00:00, execution_date=20240623T000000, start_date=20240624T114035, end_date=20240624T114036
+[2024-06-24T11:40:36.239+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-24T11:40:36.257+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1297: AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+  result = cls.__new__(cls)
+
+[2024-06-24T11:40:36.258+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1297: AirflowProviderDeprecationWarning: Call to deprecated class SimpleHttpOperator. (Class `SimpleHttpOperator` is deprecated and will be removed in a future release. Please use `HttpOperator` instead.)
+  result = cls.__new__(cls)
+
+[2024-06-24T11:40:36.299+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-06-24T11:40:36.303+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
